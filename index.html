@@ -7,5 +7,26 @@
         <body>
             <h1>Static Web App</h1>
             <p>This is a static web app.</p>
+            <button id="trigger" type="button">Call Paired Function</button>
+
+            <script>
+                var getbtn = document.getElementById("trigger");
+                getbtn.addEventListener("click", callAPI);
+
+                function callAPI()
+                {
+                    let data = {
+                        "numberItem": 37
+                    };
+
+                    fetch('/api/HttpTrigger1', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify(data)
+                    }).then(res => {
+                        console.log("Request complete response:",res);
+                    })
+                }
+            </script>
         </body>
 </html>
